@@ -24,9 +24,21 @@ export default class ReactApp extends Component {
         waiting: false,
         startTime: 0
   }
+  componentDidMount(){
+    console.log('did')
+    fetch("http://m.maoyan.com/movie/list.json?type=hot&offset=0&limit=1000")
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res)
+    })
+    .done();
+  }
   onPressBtnIn(){
+    
     console.log('press')
   }
+
+  
 
   render() {
     return (
