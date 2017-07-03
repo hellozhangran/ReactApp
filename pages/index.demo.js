@@ -1,66 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+'use strict';
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  NavigatorIOS,
-  Dimensions,
-  PixelRatio
-} from 'react-native';
-import Index from './pages/Index';
+import React , {Component} from 'react';
+import { AppRegistry, ScrollView, View, Dimensions, Text } from 'react-native';
 
+const screenWidth = Dimensions.get('window').width;
+const scrollViewWidth = Math.round(screenWidth * 1);
+const cardWidth = scrollViewWidth * 0.80;
+const paddingCard = scrollViewWidth * 0.02;
+const scrollViewPadding = scrollViewWidth * 0.08;
 
-export default class ReactApp extends Component {
+export default class ScrollViewAlign extends Component{
   render() {
-    console.log(Dimensions.get('window').width)
-    console.log(PixelRatio.get())
     return (
-      <View style={{height: 300, backgroundColor: '#ccc', justifyContent: 'center'}}>
-        {/*<Text style={{marginTop: 20}}>React Native的布局 && 尺寸</Text>
-        <View style = {[styles.box,styles.h1]}></View>
-        <Text style={styles.text}>你好</Text>
-        <View style={styles.box1}>
-          <View style={{height: 100, backgroundColor: 'red'}}></View>
-          <Text style={{height:100, backgroundColor: 'green'}}></Text>
-        </View>*/}
-          <View style={{height:100, borderWidth:1, borderColor:'#af9810', }}>
-            <View style={{flex:1,  width:200,height:200, backgroundColor: '#333333'}}/>
-            <View style={{flex:1,  width: 50,height:100, backgroundColor: 'yellow'}}/>
-          </View>  
-
-          <Text><Text style={{color:'red'}}>你好，</Text>你是谁啊，我认识你吗</Text>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ScrollView
+          contentContainerStyle={this.props.contentContainerStyle}
+          style={{flex: 0, backgroundColor: '#BDBDBD', height: screenWidth * 0.5, width: scrollViewWidth}}
+          snapToAlignment={'start'}
+          scrollEventThrottle={299}
+          directionalLockEnabled={true}
+          decelerationRate={'fast'}
+          contentOffset={{
+            x: 0,
+            y: 0,
+          }}
+          snapToInterval={cardWidth + paddingCard + paddingCard + 1}
+          showsHorizontalScrollIndicator={false}
+          horizontal={true}
+        >
+          <View style={{backgroundColor: '#F44336', width: cardWidth, marginLeft:paddingCard + scrollViewPadding, marginRight: paddingCard}}><Text>First Card</Text></View>
+          <View style={{backgroundColor: '#9C27B0', width: cardWidth, marginHorizontal:paddingCard}}><Text>Second Card</Text></View>
+          <View style={{backgroundColor: '#E91E63', width: cardWidth, marginHorizontal:paddingCard}}><Text>Third Card</Text></View>
+          <View style={{backgroundColor: '#FF5722', width: cardWidth, marginHorizontal:paddingCard}}><Text>Third Card</Text></View>
+          <View style={{backgroundColor: '#00E676', width: cardWidth, marginHorizontal:paddingCard}}><Text>Third Card</Text></View>
+          <View style={{backgroundColor: '#00B0FF', width: cardWidth, marginHorizontal:paddingCard}}><Text>Third Card</Text></View>
+          <View style={{backgroundColor: '#1A237E', width: cardWidth, marginRight:paddingCard + scrollViewPadding, marginLeft: paddingCard}}><Text>Third Card</Text></View>
+        </ScrollView>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  box1: {
-    width: 100
-  },
-  box:{
-    borderWidth:1,
-    borderColor:'red'
-  },
-  h1:{
-    height: 100
-  },
-  text: {
-    borderWidth:1,
-    borderColor:'red',
-    width: 200,
-    height:10,
-    fontSize:20
-  }
-  
-});
-
-AppRegistry.registerComponent('ReactApp', () => ReactApp);

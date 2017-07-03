@@ -6,3 +6,15 @@
 4. react native开发的尺寸规范
 
 用react native开发一个小应用
+
+
+componentWillMount
+componentDidMount
+
+shouldComponentUpdate
+componentWillUpdate
+componentDidUpdate
+
+componentWillReceiveProps
+
+componentWillUnmount
