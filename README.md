@@ -1,11 +1,8 @@
 ## ReactApp
 
-React Native
-Swift
-U2D游戏开发
+1. 导出bundle的过程优化
+2. react native开发的深入，包括自定义动画库swiper
+3. 与ios、android的交互逻辑
+4. react native开发的尺寸规范
 
-Unity3D 的开发
-
-如果是看React Native能到什么程度
-如果是搞Swift能到什么程度
-
+用react native开发一个小应用
