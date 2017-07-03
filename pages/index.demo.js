@@ -1,7 +1,7 @@
 'use strict';
 
 import React , {Component} from 'react';
-import { AppRegistry, ScrollView, View, Dimensions, Text } from 'react-native';
+import { AppRegistry, ScrollView, View, Dimensions, Text, StyleSheet } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const scrollViewWidth = Math.round(screenWidth * 1);
@@ -13,30 +13,74 @@ export default class ScrollViewAlign extends Component{
   render() {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{height:40}}></View>
         <ScrollView
-          contentContainerStyle={this.props.contentContainerStyle}
-          style={{flex: 0, backgroundColor: '#BDBDBD', height: screenWidth * 0.5, width: scrollViewWidth}}
+          contentContainerStyle={styles.scrollContainer}
+          style={styles.scroll}
           snapToAlignment={'start'}
-          scrollEventThrottle={299}
-          directionalLockEnabled={true}
           decelerationRate={'fast'}
           contentOffset={{
             x: 0,
             y: 0,
           }}
-          snapToInterval={cardWidth + paddingCard + paddingCard + 1}
+          snapToInterval={cardWidth + paddingCard + paddingCard}
           showsHorizontalScrollIndicator={false}
           horizontal={true}
+          pagingEnabled={false}
         >
-          <View style={{backgroundColor: '#F44336', width: cardWidth, marginLeft:paddingCard + scrollViewPadding, marginRight: paddingCard}}><Text>First Card</Text></View>
-          <View style={{backgroundColor: '#9C27B0', width: cardWidth, marginHorizontal:paddingCard}}><Text>Second Card</Text></View>
-          <View style={{backgroundColor: '#E91E63', width: cardWidth, marginHorizontal:paddingCard}}><Text>Third Card</Text></View>
-          <View style={{backgroundColor: '#FF5722', width: cardWidth, marginHorizontal:paddingCard}}><Text>Third Card</Text></View>
-          <View style={{backgroundColor: '#00E676', width: cardWidth, marginHorizontal:paddingCard}}><Text>Third Card</Text></View>
-          <View style={{backgroundColor: '#00B0FF', width: cardWidth, marginHorizontal:paddingCard}}><Text>Third Card</Text></View>
-          <View style={{backgroundColor: '#1A237E', width: cardWidth, marginRight:paddingCard + scrollViewPadding, marginLeft: paddingCard}}><Text>Third Card</Text></View>
+          <View style={styles.slide1}><Text>First Card</Text></View>
+          <View style={styles.slide}><Text>Second Card</Text></View>
+          <View style={styles.slide}><Text>Third Card</Text></View>
+          <View style={styles.slide}><Text>Third Card</Text></View>
+          <View style={styles.slide}><Text>Third Card</Text></View>
+          <View style={styles.slide2}><Text>Third Card</Text></View>
         </ScrollView>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  layout: {
+
+  },
+  scroll: {
+    flex: 0, 
+    backgroundColor: '#BDBDBD', 
+    height: screenWidth * 0.5,
+    width: scrollViewWidth
+  },
+  scrollContainer: {
+  },
+  slide1: {
+    justifyContent: 'center',
+    width:cardWidth, 
+    height: 500,
+    marginTop:30,
+    borderRadius: 20, 
+    backgroundColor: '#F44336', 
+    marginLeft: paddingCard + scrollViewPadding,
+    marginRight: paddingCard
+  },
+  slide2: {
+    justifyContent: 'center',
+    width: cardWidth, 
+    height: 500,
+    marginTop:30,
+    borderRadius: 20,
+    backgroundColor: '#1A237E',
+    marginRight:paddingCard + scrollViewPadding, 
+    marginLeft: paddingCard  
+  },
+  slide: {
+    justifyContent: 'center',
+    width: cardWidth, 
+    height: 500,
+    marginTop:30,
+    borderRadius: 20,
+    backgroundColor: '#9C27B0', 
+    marginHorizontal:paddingCard
+  }
+  
+
+})
